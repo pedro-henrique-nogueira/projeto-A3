@@ -1,6 +1,7 @@
 package chatbot;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
@@ -80,8 +81,11 @@ public class Chatbot {
         input = input.toLowerCase();
 
         // Verifica se a entrada contém "data" ou "hora" para fornecer a data e a hora atual
-        if (input.contains("data") || input.contains("hora")) {
-            getDateTime();
+        if (input.contains("data") || input.contains("dia")) {
+            getDate();
+        } 
+        if (input.contains("horas") || input.contains("horario")) {
+            getTime();
         } 
         // Verifica se a entrada contém "tchau" ou "adeus" para encerrar a conversa
         else if (input.contains("tchau") || input.contains("adeus")) {
@@ -108,11 +112,17 @@ public class Chatbot {
     }
 
     // Método para obter e exibir a data e a hora atuais
-    private void getDateTime() {
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        String formattedDateTime = now.format(formatter);
-        System.out.println("Hoje é " + formattedDateTime + ".");
+    private void getDate() {
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = now.format(formatter);
+        System.out.println("Hoje é " + formattedDate + ".");
+    }
+    private void getTime() {
+        LocalTime now = LocalTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        String formattedTime = now.format(formatter);
+        System.out.println("Agora são " + formattedTime + ".");
     }
 
     // Método principal para iniciar o chatbot
