@@ -74,6 +74,7 @@ public class Chatbot {
         Scanner scanner = new Scanner(System.in);
         userName = scanner.nextLine();
         System.out.println("Olá, " + userName + "! Como posso ajudar você hoje?");
+        scanner.close();
     }
 
     // Método para processar a entrada do usuário
@@ -136,6 +137,6 @@ public class Chatbot {
         do {
             userInput = scanner.nextLine();
             chatbot.processInput(userInput);
-        } while (!userInput.equalsIgnoreCase("sair"));
-    }
+        } while (!userInput.equalsIgnoreCase("sair"));        
+    }    
 }
